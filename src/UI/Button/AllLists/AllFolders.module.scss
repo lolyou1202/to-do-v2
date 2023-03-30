@@ -1,0 +1,98 @@
+.singleFolder {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 36px 1fr 36px;
+    width: 100%;
+    height: 46px;
+    font-weight: 600;
+    line-height: 20px;
+    cursor: pointer;
+    background: transparent;
+    transition: background .3s ease-in-out, box-shadow .3s ease-in-out;
+    &.active {
+        background: #fff;
+        box-shadow: var(--main-shadow);
+        border-radius: 6px;
+        .singleFolder__icon.close {
+            opacity: 1;
+        }
+    }
+    &.mainFolder {
+        font-size: 18px;
+        letter-spacing: 0.2px;
+    }
+    &.listFolder {
+        font-size: 16px;
+        letter-spacing: 0.15px;
+    }
+    &.newFolder {
+        font-size: 16px;
+        letter-spacing: 0.2px;
+        p {
+            color: var(--main-color);
+        }
+        &:hover {
+            .singleFolder__icon-plus svg {
+                stroke: var(--text-color);
+            }
+            p {
+                color: var(--text-color);
+            }
+        }
+    }
+    &__icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        transition: opacity .3s ease-in-out;
+        &-marker {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--main-color);
+        }
+        &-list {
+            div {
+                display: flex;
+                justify-content: center;
+            }
+            svg {
+                width: 20px;
+                height: 20px;
+            }
+        }
+        &-plus {
+            div {
+                display: flex;
+                justify-content: center;
+            }
+            svg {
+                stroke: var(--main-color);
+                width: 15px;
+                height: 15px;
+                transition: stroke .3s ease-in-out;
+            }
+        }
+        &.close {
+            opacity: 0;
+            transition: opacity .3s ease-in-out;
+            div {
+                display: flex;
+                justify-content: center;
+            }
+            svg {
+                fill: var(--main-color);
+                width: 10px;
+                height: 10px;
+                transition: fill .3s ease-in-out;
+            }
+        }
+    }
+    p {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        transition: color .3s ease-in-out;
+    }
+}

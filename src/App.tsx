@@ -1,7 +1,5 @@
-import React from 'react'
+import { AllLists } from "./UI/Button/AllLists/AllFolders";
 
 export default function App() {
-  return (
-    <div>App</div>
-  )
+    return <AllLists content="asdasd"/>
 }
