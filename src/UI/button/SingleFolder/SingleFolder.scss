@@ -17,28 +17,9 @@
             opacity: 1;
         }
     }
-    &.mainFolder {
-        font-size: 18px;
-        letter-spacing: 0.2px;
-    }
     &.listFolder {
         font-size: 16px;
         letter-spacing: 0.15px;
-    }
-    &.newFolder {
-        font-size: 16px;
-        letter-spacing: 0.2px;
-        p {
-            color: var(--main-color);
-        }
-        &:hover {
-            .singleFolder__icon-plus svg {
-                stroke: var(--text-color);
-            }
-            p {
-                color: var(--text-color);
-            }
-        }
     }
     &__icon {
         display: flex;
@@ -51,28 +32,6 @@
             height: 10px;
             border-radius: 50%;
             background: var(--main-color);
-        }
-        &-list {
-            div {
-                display: flex;
-                justify-content: center;
-            }
-            svg {
-                width: 20px;
-                height: 20px;
-            }
-        }
-        &-plus {
-            div {
-                display: flex;
-                justify-content: center;
-            }
-            svg {
-                stroke: var(--main-color);
-                width: 15px;
-                height: 15px;
-                transition: stroke .3s ease-in-out;
-            }
         }
         &.close {
             opacity: 0;

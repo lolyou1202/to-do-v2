@@ -1,0 +1,36 @@
+.feed {
+    padding: 40px 60px;
+    &__list {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        overflow-y: auto;
+    }
+    &__notSelected {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        font-weight: 600;
+        font-size: 48px;
+        line-height: 30px;
+        letter-spacing: 0.15px;
+        color: var(--light-color);
+        cursor: default;
+    }
+}
+.singleItem__main {
+    &-list {
+        margin: 20px 0;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    &-notFound {
+        font-weight: 500;
+        font-size: 22px;
+        line-height: 30px;
+        letter-spacing: 0.15px;
+        color: var(--main-color);
+    }
+}

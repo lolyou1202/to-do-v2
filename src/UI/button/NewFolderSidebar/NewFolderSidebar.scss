@@ -1,0 +1,52 @@
+.singleFolder {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 36px 1fr 36px;
+    width: 100%;
+    height: 46px;
+    font-weight: 600;
+    line-height: 20px;
+    cursor: pointer;
+    background: transparent;
+    transition: background .3s ease-in-out, box-shadow .3s ease-in-out;
+    &.newFolder {
+        font-size: 16px;
+        letter-spacing: 0.2px;
+        p {
+            color: var(--main-color);
+        }
+        &:hover {
+            .singleFolder__icon-plus svg {
+                stroke: var(--text-color);
+            }
+            p {
+                color: var(--text-color);
+            }
+        }
+    }
+    &__icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        transition: opacity .3s ease-in-out;
+        &-plus {
+            div {
+                display: flex;
+                justify-content: center;
+            }
+            svg {
+                stroke: var(--main-color);
+                width: 15px;
+                height: 15px;
+                transition: stroke .3s ease-in-out;
+            }
+        }
+    }
+    p {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        transition: color .3s ease-in-out;
+    }
+}

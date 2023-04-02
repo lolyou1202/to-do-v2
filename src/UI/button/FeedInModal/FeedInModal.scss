@@ -1,0 +1,18 @@
+.modal__buttons-item {
+    padding: 0 20px;
+    height: 40px;
+    border-radius: 6px;
+    border: none;
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 0.15px;
+    cursor: pointer;
+    &.submit {
+        background: var(--check-color);
+        color: #fff;
+    }
+    &.cancel {
+        color: var(--main-color);
+        background: var(--light-color);
+    }
+}

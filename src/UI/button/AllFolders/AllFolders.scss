@@ -1,0 +1,47 @@
+.singleFolder {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 36px 1fr 36px;
+    width: 100%;
+    height: 46px;
+    font-weight: 600;
+    line-height: 20px;
+    cursor: pointer;
+    background: transparent;
+    transition: background 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    &.active {
+        background: #fff;
+        box-shadow: var(--main-shadow);
+        border-radius: 6px;
+        .singleFolder__icon.close {
+            opacity: 1;
+        }
+    }
+    &.mainFolder {
+        font-size: 18px;
+        letter-spacing: 0.2px;
+    }
+    &__icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        transition: opacity 0.3s ease-in-out;
+        &-list {
+            div {
+                display: flex;
+                justify-content: center;
+            }
+            svg {
+                width: 20px;
+                height: 20px;
+            }
+        }
+    }
+    p {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        transition: color 0.3s ease-in-out;
+    }
+}

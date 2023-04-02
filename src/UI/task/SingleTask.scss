@@ -1,0 +1,94 @@
+.singleItem__main-task {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    & > div {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+    .task {
+        &-status {
+            position: relative;
+            width: 30px;
+            height: 30px;
+            border: 2px solid var(--border-color);
+            border-radius: 50%;
+            background: transparent;
+            cursor: pointer;
+            transition: background 0.3s ease-in-out, border 0.3s ease-in-out;
+            div {
+                position: absolute;
+                left: 3px;
+                top: 4px;
+                display: flex;
+            }
+            svg {
+                width: 16px;
+                fill: none;
+                stroke: transparent;
+                transition: all 0.3s ease-in-out;
+            }
+        }
+        &-content {
+            font-weight: 500;
+            font-size: 22px;
+            line-height: 30px;
+        }
+        &-delete {
+            position: relative;
+            width: 30px;
+            height: 30px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            div {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                display: flex;
+                transform: translate(-50%, -50%);
+            }
+            svg {
+                width: 14px;
+                fill: transparent;
+                transition: all 0.3s ease-in-out;
+            }
+        }
+    }
+    &:hover {
+        .task-status {
+            background: var(--border-color);
+            svg {
+                fill: none;
+                stroke: var(--main-color);
+            }
+        }
+        .task-delete {
+            svg {
+                fill: var(--light-color);
+            }
+        }
+        &.active {
+            .task-status {
+                border: 2px solid var(--check-color);
+                background: var(--check-color);
+                svg {
+                    fill: none;
+                    stroke: #fff;
+                }
+            }
+        }
+    }
+    &.active {
+        .task-status {
+            border: 2px solid var(--check-color);
+            background: var(--check-color);
+            svg {
+                fill: none;
+                stroke: #fff;
+            }
+        }
+    }
+}

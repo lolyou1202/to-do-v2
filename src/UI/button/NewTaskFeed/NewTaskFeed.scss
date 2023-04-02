@@ -1,0 +1,37 @@
+.feed__newTask {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 30px;
+    }
+    svg {
+        width: 18px;
+        height: 18px;
+        stroke: var(--main-color);
+        transition: stroke .3s ease-in-out;
+    }
+    p {
+        font-weight: 500;
+        font-size: 20px;
+        letter-spacing: 0.15px;
+        line-height: 20px;
+        color: var(--main-color);
+        transition: color .3s ease-in-out;
+    }
+    &:hover {
+        svg {
+            stroke: var(--text-color);
+        }
+        p {
+            color: var(--text-color);
+        }
+    }
+}

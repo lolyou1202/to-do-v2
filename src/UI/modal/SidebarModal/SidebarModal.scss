@@ -1,0 +1,83 @@
+.newFolder {
+    &__modal {
+        margin-top: 30px;
+        padding: 20px;
+        background: #fff;
+        box-shadow: var(--main-shadow);
+        border-radius: 6px;
+        position: relative;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity .2s ease-in-out, transform .3s ease-in-out;
+        &-input {
+            width: 100%;
+            height: 40px;
+            border-radius: 6px;
+            background: #fff;
+            border: 2px solid var(--light-color);
+            padding: 0 12px;
+            font-weight: 600;
+            font-size: 16px;
+            letter-spacing: 0.15px;
+            color: var(--text-color);
+            &::placeholder {
+                color: var(--light-color);
+            }
+        }
+        &-close {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            background: var(--light-color);
+            position: absolute;
+            right: -8px;
+            top: -8px;
+            cursor: pointer;
+            div {
+                display: flex;
+            }
+            svg {
+                width: 10px;
+                height: 10px;
+                fill: #fff;
+            }
+        }
+        &-button {
+            width: 100%;
+            height: 40px;
+            background: var(--check-color);
+            border-radius: 6px;
+            border: none;
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 0.15px;
+            color: #fff;
+            cursor: pointer;
+        }
+        .colors__list {
+            display: flex;
+            justify-content: space-between;
+            margin: 15px 0;
+            &-item {
+                position: relative;
+                width: 24px;
+                height: 24px;
+                border-radius: 50%;
+                background: #a7a7a7;
+                cursor: pointer;
+                border: 3px solid rgba(#767676, 0);
+                transition: border-color .3s ease-in-out;
+                &.active {
+                    border-color: rgba(#767676, 1);
+                }
+            }
+        }
+        &.active {
+            opacity: 1;
+            transform: translateY(0px)
+        }
+    }
+}
