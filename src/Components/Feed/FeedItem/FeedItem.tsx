@@ -1,4 +1,4 @@
-import { FC, useCallback, useContext } from 'react'
+import { FC, useCallback, useContext, useEffect, useState } from 'react'
 import { HeaderInList } from '../../../UI/header/HeaderInList'
 import { SingleTask } from '../../../UI/task/SingleTask'
 import { DbContextType, folders } from '../../../Types/Types'
@@ -10,7 +10,38 @@ interface props {
 }
 
 export const FeedItem: FC<props> = ({ folder, visible }) => {
-    const { colors, tasks, setTasks } = useContext(DbContext) as DbContextType
+    const [headerContent, setHeaderContent] = useState<string>(folder.name)
+    const [disabledEdit, setDisabledEdit] = useState<boolean>(true)
+
+    const {
+        colors,
+        folders,
+        setFolders,
+        tasks,
+        setTasks
+    } = useContext(DbContext) as DbContextType
+
+    //useEffect(() => {
+    //    setHeaderContent(folder.name)
+    //}, [folder.name])
+
+    useEffect(() => {
+        //setHeaderContent(folder.name)
+        const renameFolder = folders.map(item => {
+            if (item.id === folder.id) {
+                item.name = headerContent
+            }
+            return item
+        })
+        disabledEdit && setFolders(renameFolder)
+    }, [
+        disabledEdit,
+        folder.id,
+        folder.name,
+        folders,
+        headerContent,
+        setFolders,
+    ])
 
     const currentColor = useCallback(() => {
         const findColor = colors.find(color => color.id === folder.colorId)
@@ -20,9 +51,10 @@ export const FeedItem: FC<props> = ({ folder, visible }) => {
         return findColor.hex
     }, [colors, folder.colorId])
 
-    const currentTasks = useCallback(() =>
-        tasks.filter(task => task.foldersId === folder.id),
-    [tasks, folder.id])
+    const currentTasks = useCallback(
+        () => tasks.filter(task => task.foldersId === folder.id),
+        [tasks, folder.id]
+    )
 
     const ClickSingleTaskTarget = (id: number) => {
         const newList = tasks.map(task => {
@@ -44,7 +76,11 @@ export const FeedItem: FC<props> = ({ folder, visible }) => {
     return (
         <li className='feed__list-item'>
             <HeaderInList
-                content={folder.name}
+                value={folder.name}
+                valueInput={headerContent}
+                setValueInput={setHeaderContent}
+                disabled={disabledEdit}
+                setDisabled={setDisabledEdit}
                 visible={visible}
                 color={currentColor()}
             />
@@ -62,7 +98,9 @@ export const FeedItem: FC<props> = ({ folder, visible }) => {
                             />
                         ))
                     ) : (
-                        <div className='singleItem__main-notFound'>Заметок не найдено</div>
+                        <div className='singleItem__main-notFound'>
+                            Заметок не найдено
+                        </div>
                     )}
                 </ul>
             </div>

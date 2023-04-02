@@ -11,7 +11,7 @@ export default function App() {
         LISTFOLDER: false,
         NEWFOLDER: false,
     })
-    console.log(activeTab)
+    //console.log(activeTab)
     const [folders, setFolders] = useState<folders[]>(db.folders)
     const [tasks, setTasks] = useState<tasks[]>(db.tasks)
     const [colors, setColors] = useState<colors[]>(db.colors)
