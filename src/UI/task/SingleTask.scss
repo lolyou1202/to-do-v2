@@ -10,6 +10,7 @@
     }
     .task {
         &-status {
+            flex-shrink: 0;
             position: relative;
             width: 30px;
             height: 30px;

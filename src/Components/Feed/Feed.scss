@@ -1,10 +1,10 @@
 .feed {
     padding: 40px 60px;
+    overflow-y: auto;
     &__list {
         display: flex;
         flex-direction: column;
         gap: 40px;
-        overflow-y: auto;
     }
     &__notSelected {
         display: flex;
@@ -18,8 +18,18 @@
         color: var(--light-color);
         cursor: default;
     }
+    &::-webkit-scrollbar {
+        background: transparent;
+        width: 20px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: var(--light-color);
+        border: 5px solid #fff;
+        border-radius: 50px;
+    }
 }
 .singleItem__main {
+    border-top: 2px solid var(--border-color);
     &-list {
         margin: 20px 0;
         display: flex;

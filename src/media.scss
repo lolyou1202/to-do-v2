@@ -1,0 +1,81 @@
+@media (max-width: 1023px) {
+    .App {
+        grid-template-columns: 250px 1fr;
+    }
+}
+
+
+@media (max-width: 719px) {
+    .App {
+        grid-template-columns: 86px 1fr;
+    }
+    .sidebar {
+        width: 86px;
+        padding: 30px 20px !important;
+        &__mobileIco {
+            display: flex !important;
+        }
+    }
+    .allFolders {
+        display: none;
+    }
+    .listFolders {
+        display: none;
+    }
+    .newFolder {
+        display: none;
+    }
+    .feed {
+        padding: 10px 30px !important;
+        &__list {
+            gap: 0 !important;
+        }
+        &::-webkit-scrollbar {
+            width: 15px !important;
+        }
+        &::-webkit-scrollbar-thumb {
+            border: 5px solid #fff !important;
+        }
+    }
+    .singleItem__header {
+        gap: 10px !important;
+        &-title {
+            font-size: 28px !important;
+        }
+        &-edit {
+            svg {
+                width: 12px !important;
+                height: 12px !important;
+            }
+        }
+    }
+    
+    .singleItem__main {
+        &-task {
+            .task-content {
+                line-height: 100% !important;
+                font-size: 18px !important;
+            }
+            .task-status {
+                width: 24px !important;
+                height: 24px !important;
+                div {
+                    left: 2px !important;
+                    top: 3px !important;
+                }
+                svg {
+                    width: 14px !important;
+                }
+            }
+            .task-delete {
+                svg {
+                    width: 12px !important;
+                }
+            }
+        }
+        &-notFound {
+            font-size: 18px !important;
+        }
+    }
+    
+}

@@ -1,4 +1,4 @@
-import { FC, useCallback, useContext, useEffect, useState } from 'react'
+import { FC, useCallback, useContext } from 'react'
 import { HeaderInList } from '../../../UI/header/HeaderInList'
 import { SingleTask } from '../../../UI/task/SingleTask'
 import { DbContextType, folders } from '../../../Types/Types'
@@ -6,42 +6,23 @@ import { DbContext } from '../../../Context/Context'
 
 interface props {
     folder: folders
-    visible: boolean
 }
 
-export const FeedItem: FC<props> = ({ folder, visible }) => {
-    const [headerContent, setHeaderContent] = useState<string>(folder.name)
-    const [disabledEdit, setDisabledEdit] = useState<boolean>(true)
+export const FeedItem: FC<props> = ({ folder }) => {
+    const { colors, folders, setFolders, tasks, setTasks } = useContext(
+        DbContext
+    ) as DbContextType
 
-    const {
-        colors,
-        folders,
-        setFolders,
-        tasks,
-        setTasks
-    } = useContext(DbContext) as DbContextType
-
-    //useEffect(() => {
-    //    setHeaderContent(folder.name)
-    //}, [folder.name])
-
-    useEffect(() => {
-        //setHeaderContent(folder.name)
+    const HandlerBlur = (content: string) => {
+        if (content === '') {
+            return
+        }
         const renameFolder = folders.map(item => {
-            if (item.id === folder.id) {
-                item.name = headerContent
-            }
+            item.id === folder.id && (item.name = content)
             return item
         })
-        disabledEdit && setFolders(renameFolder)
-    }, [
-        disabledEdit,
-        folder.id,
-        folder.name,
-        folders,
-        headerContent,
-        setFolders,
-    ])
+        setFolders(renameFolder)
+    }
 
     const currentColor = useCallback(() => {
         const findColor = colors.find(color => color.id === folder.colorId)
@@ -58,9 +39,7 @@ export const FeedItem: FC<props> = ({ folder, visible }) => {
 
     const ClickSingleTaskTarget = (id: number) => {
         const newList = tasks.map(task => {
-            if (task.id === id) {
-                task.completed = !task.completed
-            }
+            task.id === id && (task.completed = !task.completed)
             return task
         })
         setTasks(newList)
@@ -77,11 +56,7 @@ export const FeedItem: FC<props> = ({ folder, visible }) => {
         <li className='feed__list-item'>
             <HeaderInList
                 value={folder.name}
-                valueInput={headerContent}
-                setValueInput={setHeaderContent}
-                disabled={disabledEdit}
-                setDisabled={setDisabledEdit}
-                visible={visible}
+                blur={HandlerBlur}
                 color={currentColor()}
             />
             <div className='singleItem__main'>

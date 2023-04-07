@@ -2,6 +2,26 @@
     background: var(--secondary-color);
     padding: 60px 20px 180px 20px;
     border-right: 2px solid var(--border-color);
+    &__mobileIco {
+        display: none;
+        width: 44px;
+        height: 44px;
+        align-items: center;
+        justify-content: center;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: var(--main-shadow);
+        cursor: pointer;
+        &-list {
+            div {
+                display: flex;
+            }
+            svg {
+                width: 28px;
+                height: 28px;
+            }
+        }
+    }
 }
 .allFolders {
     margin-bottom: 20px;

@@ -12,32 +12,35 @@ export const Feed: FC = () => {
     const feedContent = useCallback(() => {
         switch (true) {
             case activeTab.MAINFOLDER:
-                return
+                return folders.map(folder => (
+                    <FeedItem key={folder.id} folder={folder} />
+                ))
             case activeTab.LISTFOLDER:
                 const selectedFolder = folders.find(folder => folder.selected)
                 if (!selectedFolder) {
                     return
                 }
-                return <FeedItem folder={selectedFolder} visible={true} />
+                return <FeedItem folder={selectedFolder} />
             default:
                 return
         }
     }, [activeTab, folders])
 
-    const hint = useCallback(() => {
+    const feedFilling = useCallback(() => {
         switch (true) {
             case !folders.length:
                 return <div className='feed__notSelected'>Задачи отсутствуют</div>
             case !activeTab.LISTFOLDER && !activeTab.MAINFOLDER:
                 return <div className='feed__notSelected'>Выберите задачу</div>
+            case activeTab.LISTFOLDER:
+                return <CommonFeedModal />
         }
     }, [folders, activeTab])
 
     return (
         <div className='feed'>
             <ul className='feed__list'>{feedContent()}</ul>
-            {activeTab.LISTFOLDER && <CommonFeedModal />}
-            {hint()}
+            {feedFilling()}
         </div>
     )
 }

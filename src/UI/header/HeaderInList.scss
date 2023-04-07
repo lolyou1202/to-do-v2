@@ -1,16 +1,15 @@
 .singleItem__header {
-    padding: 20px 0;
+    margin: 20px 0;
     display: flex;
     gap: 15px;
-    border-bottom: 2px solid var(--border-color);
     &-title {
         border: none;
         background: transparent;
         font-weight: 700;
         font-size: 32px;
+        min-width: 20px;
     }
     &-edit {
-        display: none;
         padding-top: 6px;
         background: transparent;
         border: none;
@@ -28,9 +27,6 @@
             svg {
                 fill: var(--main-color);
             }
-        }
-        &.visible {
-            display: block;
         }
     }
 }

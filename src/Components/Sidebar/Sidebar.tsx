@@ -5,10 +5,15 @@ import './Sidebar.scss'
 import { ActiveSidebarTab, DbContext } from '../../Context/Context'
 import { ActiveSidebarTabType, DbContextType } from '../../Types/Types'
 import { CommonSidebarModal } from './CommonSidebarModal/CommonSidebarModal'
+import { ReactSVG } from 'react-svg'
 
 export const Sidebar: FC = () => {
-    const { activeTab, setActiveTab } = useContext(ActiveSidebarTab) as ActiveSidebarTabType
-    const { folders, setFolders, colors } = useContext(DbContext) as DbContextType
+    const { activeTab, setActiveTab } = useContext(
+        ActiveSidebarTab
+    ) as ActiveSidebarTabType
+    const { folders, setFolders, colors } = useContext(
+        DbContext
+    ) as DbContextType
 
     const ClickAllFolders = () => {
         setActiveTab(prevState => ({
@@ -55,7 +60,7 @@ export const Sidebar: FC = () => {
             return folder.id !== id
         })
         setFolders(newList)
-        
+
         setActiveTab(prevState => ({
             ...prevState,
             MAINFOLDER: false,
@@ -65,6 +70,13 @@ export const Sidebar: FC = () => {
 
     return (
         <div className='sidebar'>
+            <div className='sidebar__mobileIco'>
+                <ReactSVG
+                    src={require('../../Assets/img/entypo-list.svg').default}
+                    className='sidebar__mobileIco-list'
+                />
+            </div>
+
             <div className='allFolders'>
                 <AllFolders
                     content='Все задачи'

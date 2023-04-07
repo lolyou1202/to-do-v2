@@ -6,9 +6,10 @@
         box-shadow: var(--main-shadow);
         border-radius: 6px;
         position: relative;
+        z-index: -1;
         opacity: 0;
         transform: translateY(30px);
-        transition: opacity .2s ease-in-out, transform .3s ease-in-out;
+        transition: all 0.3s ease-in-out;
         &-input {
             width: 100%;
             height: 40px;
@@ -69,15 +70,27 @@
                 background: #a7a7a7;
                 cursor: pointer;
                 border: 3px solid rgba(#767676, 0);
-                transition: border-color .3s ease-in-out;
+                transition: border-color 0.3s ease-in-out;
                 &.active {
                     border-color: rgba(#767676, 1);
                 }
+                //@keyframes incorrect {
+                //    0% {
+                //        border-color: transparent;
+                //    }
+                //    50% {
+                //        border-color: #d92929
+                //    }
+                //    100% {
+                //        border-color: transparent;
+                //    }
+                //}
             }
         }
         &.active {
+            z-index: 1;
             opacity: 1;
-            transform: translateY(0px)
+            transform: translateY(0px);
         }
     }
 }

@@ -4,40 +4,23 @@ import './HeaderInList.scss'
 
 interface props {
     value: string
-    valueInput: string
-    setValueInput: React.Dispatch<React.SetStateAction<string>>
-    disabled: boolean
-    setDisabled: React.Dispatch<React.SetStateAction<boolean>>
-    visible: boolean
+    blur: (content: string) => void
     color: string
 }
 
-export const HeaderInList: FC<props> = ({
-    value,
-    valueInput,
-    setValueInput,
-    disabled,
-    setDisabled,
-    visible,
-    color,
-}) => {
+export const HeaderInList: FC<props> = ({ value, blur, color }) => {
     return (
         <div className='singleItem__header'>
-            <input
-                type='text'
+            <h1
                 className='singleItem__header-title'
-                style={{
-                    color: `${color}`,
-                    width: valueInput.length + 0.5 + 'ch',
-                }}
-                value={disabled ? value : valueInput}
-                onChange={e => setValueInput(e.target.value)}
-                disabled={disabled}
-            />
-            <button
-                className={'singleItem__header-edit' + (visible ? ' visible' : '')}
-                onClick={() => setDisabled(prevState => !prevState)}
+                style={{ color: `${color}` }}
+                contentEditable
+                suppressContentEditableWarning={true}
+                onBlur={e => e.target.textContent && blur(e.target.textContent)}
             >
+                {value}
+            </h1>
+            <button className={'singleItem__header-edit'}>
                 <ReactSVG
                     src={require('../../Assets/img/change.svg').default}
                 />
